@@ -81,10 +81,10 @@
 
                         <div class="user-info">
                             <h3 class="p-0 m-0">{{element.name}}</h3>
-                            <small>Ultimo messaggio inviato</small>
+                            <small class="text-secondary">Ultimo messaggio inviato</small>
                         </div>
                         <div class="last-message-time">
-                            <small>12:00</small>
+                            <small class="text-secondary">12:00</small>
                         </div>
                     </div>
                     
@@ -134,7 +134,7 @@
                         <i class="fa-regular fa-face-smile"></i>
                     </a>
 
-                    <input type="text" class="form-control" placeholder="Scrivi un messaggio">
+                    <input type="text" v-model="newMessage" @keyup.enter="sendMessage" class="form-control" placeholder="Scrivi un messaggio">
 
                     <a href="#" class="text-secondary">
                         <i class="fa-solid fa-microphone"></i>

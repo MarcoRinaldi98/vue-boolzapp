@@ -170,11 +170,32 @@ createApp({
                     ],
                 }
             ],
-            activeUser: 0,               
+            activeUser: 0, 
+            newMessage: null             
         }           
     }, methods: {
         changeUser(newActiveUser) {
             this.activeUser = newActiveUser;
+        },
+        sendMessage() {
+            const newBoxMessage = {
+                date: '10/01/2020 15:51:00',
+                message: this.newMessage,
+                status: 'sent'
+            };
+            this.contacts[this.activeUser].messages.push(newBoxMessage);
+            this.newMessage = '';
+            this.answerMessage();
+        },
+        answerMessage() {
+            const answer = {
+                date: '10/01/2020 15:51:00',
+                message: 'ok',
+                status: 'received'
+            }
+            setTimeout(() => {
+                this.contacts[this.activeUser].messages.push(answer);
+            }, 1000);
         }
     }
 }).mount('#app')
