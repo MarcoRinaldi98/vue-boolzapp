@@ -32,7 +32,7 @@
                 <div class="header-left">
 
                     <div class="header-left-icon">
-                        <img src="img/avatar_1.jpg" alt="">
+                        <img src="img/IO.jpg" alt="">
                         <span class="ps-1 fw-semibold">Marco</span>
                     </div>
 
@@ -74,117 +74,13 @@
                 <!-- lista chat con utenti -->
                 <div class="users">
 
-                    <div class="user">
+                    <div v-for="element in contacts" class="user">
                         <div class="user-image">
-                            <img src="img/avatar_1.jpg" alt="">
+                            <img :src="element.avatar" alt="element.name">
                         </div>
 
                         <div class="user-info">
-                            <h3 class="p-0 m-0">Name</h3>
-                            <small>Ultimo messaggio inviato</small>
-                        </div>
-                        <div class="last-message-time">
-                            <small>12:00</small>
-                        </div>
-                    </div>    
-                    <div class="user">
-                        <div class="user-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-
-                        <div class="user-info">
-                            <h3 class="p-0 m-0">Name</h3>
-                            <small>Ultimo messaggio inviato</small>
-                        </div>
-                        <div class="last-message-time">
-                            <small>12:00</small>
-                        </div>
-                    </div> 
-                    <div class="user">
-                        <div class="user-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-
-                        <div class="user-info">
-                            <h3 class="p-0 m-0">Name</h3>
-                            <small>Ultimo messaggio inviato</small>
-                        </div>
-                        <div class="last-message-time">
-                            <small>12:00</small>
-                        </div>
-                    </div>                
-                    <div class="user">
-                        <div class="user-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-
-                        <div class="user-info">
-                            <h3 class="p-0 m-0">Name</h3>
-                            <small>Ultimo messaggio inviato</small>
-                        </div>
-                        <div class="last-message-time">
-                            <small>12:00</small>
-                        </div>
-                    </div> 
-                    <div class="user">
-                        <div class="user-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-
-                        <div class="user-info">
-                            <h3 class="p-0 m-0">Name</h3>
-                            <small>Ultimo messaggio inviato</small>
-                        </div>
-                        <div class="last-message-time">
-                            <small>12:00</small>
-                        </div>
-                    </div> 
-                    <div class="user">
-                        <div class="user-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-
-                        <div class="user-info">
-                            <h3 class="p-0 m-0">Name</h3>
-                            <small>Ultimo messaggio inviato</small>
-                        </div>
-                        <div class="last-message-time">
-                            <small>12:00</small>
-                        </div>
-                    </div> 
-                    <div class="user">
-                        <div class="user-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-
-                        <div class="user-info">
-                            <h3 class="p-0 m-0">Name</h3>
-                            <small>Ultimo messaggio inviato</small>
-                        </div>
-                        <div class="last-message-time">
-                            <small>12:00</small>
-                        </div>
-                    </div> 
-                    <div class="user">
-                        <div class="user-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-
-                        <div class="user-info">
-                            <h3 class="p-0 m-0">Name</h3>
-                            <small>Ultimo messaggio inviato</small>
-                        </div>
-                        <div class="last-message-time">
-                            <small>12:00</small>
-                        </div>
-                    </div> 
-                    <div class="user">
-                        <div class="user-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-
-                        <div class="user-info">
-                            <h3 class="p-0 m-0">Name</h3>
+                            <h3 class="p-0 m-0">{{element.name}}</h3>
                             <small>Ultimo messaggio inviato</small>
                         </div>
                         <div class="last-message-time">
@@ -224,66 +120,6 @@
                 <!-- Parte per visualizzare i messaggi della chat con l'utente selezionato -->
                 <div class="chat">
                     
-                    <div class="message-line">
-                        <div class="message send">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, rerum!</span>
-                            <small class="text-secondary align-self-end">12:00</small>
-                        </div>
-                    </div>
-                    <div class="message-line">
-                        <div class="message received">
-                            <span>TESTO</span>
-                            <small class="text-secondary align-self-end">12:00</small>
-                        </div>
-                    </div>
-                    <div class="message-line">
-                        <div class="message send">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, rerum!</span>
-                            <small class="text-secondary align-self-end">12:00</small>
-                        </div>
-                    </div>
-                    <div class="message-line">
-                        <div class="message received">
-                            <span>TESTO</span>
-                            <small class="text-secondary align-self-end">12:00</small>
-                        </div>
-                    </div>
-                    <div class="message-line">
-                        <div class="message send">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, rerum!</span>
-                            <small class="text-secondary align-self-end">12:00</small>
-                        </div>
-                    </div>
-                    <div class="message-line">
-                        <div class="message received">
-                            <span>TESTO</span>
-                            <small class="text-secondary align-self-end">12:00</small>
-                        </div>
-                    </div>
-                    <div class="message-line">
-                        <div class="message send">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, rerum!</span>
-                            <small class="text-secondary align-self-end">12:00</small>
-                        </div>
-                    </div>
-                    <div class="message-line">
-                        <div class="message received">
-                            <span>TESTO</span>
-                            <small class="text-secondary align-self-end">12:00</small>
-                        </div>
-                    </div>
-                    <div class="message-line">
-                        <div class="message send">
-                            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, rerum!</span>
-                            <small class="text-secondary align-self-end">12:00</small>
-                        </div>
-                    </div>
-                    <div class="message-line">
-                        <div class="message received">
-                            <span>TESTO</span>
-                            <small class="text-secondary align-self-end">12:00</small>
-                        </div>
-                    </div>
                     <div class="message-line">
                         <div class="message send">
                             <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, rerum!</span>
