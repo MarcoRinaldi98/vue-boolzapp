@@ -120,10 +120,18 @@
                 <!-- Parte per visualizzare i messaggi della chat con l'utente selezionato -->
                 <div class="chat">
                     
-                    <div v-for="mex in contacts[activeUser].messages" class="message-line">
-                        <div class="message" :class="mex.status">
+                    <div v-for="(mex, i) in contacts[activeUser].messages" class="message-line">
+                        <div class="message dropdown" :class="mex.status">
                             <span>{{mex.message}}</span>
-                            <small class="text-secondary align-self-end">12:00</small>
+                            <small class="text-secondary align-self-end d-flex"  data-bs-toggle="dropdown">
+                                12:00
+                                <span class="hide text-secondary dropdown-toggle"></span>
+                            </small>
+                            
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Message info</a></li>
+                                <li @click="removeMessage(i)"><a class="dropdown-item" href="#">Delete Message</a></li>
+                              </ul>
                         </div>
                     </div>
                     

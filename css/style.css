@@ -170,6 +170,12 @@ main {
     background-color: var(--ms-text-white);
     margin-right: calc(100% - 400px);
 }
+.hide {
+    display: none;
+}
+.message:hover .hide {
+    display: block;
+}
 /* content right - WRITE TEXT */
 .write-text {
     width: 100%;

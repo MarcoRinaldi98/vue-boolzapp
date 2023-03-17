@@ -110,7 +110,7 @@ createApp({
                 },
                 {
                     name: 'Claudia',
-                    avatar: './img/avatar_5.jpg',
+                    avatar: './img/avatar_6.jpg',
                     visible: true,
                     messages: [
                         {
@@ -168,10 +168,32 @@ createApp({
                         status: 'received'
                         }
                     ],
+                },
+                {
+                    name: 'Simona',
+                    avatar: './img/avatar_io.jpg',
+                    visible: true,
+                    messages: [
+                        {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Hai portato a spasso il cane?',
+                        status: 'sent'
+                        },
+                        {
+                        date: '10/01/2020 15:50:00',
+                        message: 'Ricordati di stendere i panni',
+                        status: 'sent'
+                        },
+                        {
+                        date: '10/01/2020 16:18:00',
+                        message: 'Tutto fatto!',
+                        status: 'received'
+                        }
+                    ]
                 }
             ],
             activeUser: 0, 
-            newMessage: null             
+            newMessage: null 
         }           
     }, methods: {
         changeUser(newActiveUser) {
@@ -196,6 +218,9 @@ createApp({
             setTimeout(() => {
                 this.contacts[this.activeUser].messages.push(answer);
             }, 1000);
+        },
+        removeMessage(i) {
+            this.contacts[this.activeUser].messages.splice(i, 1);
         }
     }
 }).mount('#app')
