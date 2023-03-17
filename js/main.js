@@ -169,7 +169,12 @@ createApp({
                         }
                     ],
                 }
-            ]                
+            ],
+            activeUser: 0,               
         }           
+    }, methods: {
+        changeUser(newActiveUser) {
+            this.activeUser = newActiveUser;
+        }
     }
 }).mount('#app')

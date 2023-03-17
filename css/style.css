@@ -127,6 +127,9 @@ main {
     height: 80px;
     cursor: pointer;
 }
+.user:hover {
+    background-color: var(--ms-main-color);
+}
 .user img {
     height: 60px;
     width: 60px;
@@ -159,7 +162,7 @@ main {
     display: flex;
     justify-content: space-between;
 }
-.message.send {
+.message.sent {
     background-color: var(--ms-send-color);
     margin-left: calc(100% - 400px);
 }
