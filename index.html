@@ -68,13 +68,13 @@
                         <span class="input-group-text">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </span>
-                        <input class="new-player-inputs form-control" placeholder="Cerca o inizia una nuova chat">
+                        <input v-model="searchUser" @keyup="viewSearchUser()" class="new-player-inputs form-control" placeholder="Cerca o inizia una nuova chat">
                     </div>
                 </div>
                 <!-- lista chat con utenti -->
                 <div class="users">
 
-                    <div v-for="(element, index) in contacts" class="user" @click="changeUser(index)">
+                    <div v-for="(element, index) in contacts" class="user" v-show="element.visible" @click="changeUser(index)">
                         <div class="user-image">
                             <img :src="element.avatar" :alt="element.name">
                         </div>
@@ -94,60 +94,72 @@
 
             <!-- Parte destra del CONTENT -->
             <div class="content-right">
-                <div class="header-right">
-                    <!-- Intestazione con info dell'utente con in quale sto chattando e con icone di navigazione -->
-                    <div class="header-right-icon d-flex">
-                        <img :src="contacts[activeUser].avatar">
-                        <div class="user-info">
-                            <h6 class="p-0 m-0">{{contacts[activeUser].name}}</h6>
-                            <small class="text-secondary">Ultimo accesso oggi alle 12:00</small>
+                <div v-if="activeUser != -1" class="w-100 h-100">
+                    <div class="header-right">
+                        <!-- Intestazione con info dell'utente con in quale sto chattando e con icone di navigazione -->
+                        <div class="header-right-icon d-flex">
+                            <img :src="contacts[activeUser].avatar">
+                            <div class="user-info">
+                                <h6 class="p-0 m-0">{{contacts[activeUser].name}}</h6>
+                                <small class="text-secondary">Ultimo accesso oggi alle 12:00</small>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="header-right-nav">
-                        <a href="#">
-                            <i class="fa-solid fa-bell-slash"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa-solid fa-paperclip"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </a>
-                    </div>
-
-                </div>
-                <!-- Parte per visualizzare i messaggi della chat con l'utente selezionato -->
-                <div class="chat">
-                    
-                    <div v-for="(mex, i) in contacts[activeUser].messages" class="message-line">
-                        <div class="message dropdown" :class="mex.status">
-                            <span>{{mex.message}}</span>
-                            <small class="text-secondary align-self-end d-flex"  data-bs-toggle="dropdown">
-                                12:00
-                                <span class="hide text-secondary dropdown-toggle"></span>
-                            </small>
-                            
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Message info</a></li>
-                                <li @click="removeMessage(i)"><a class="dropdown-item" href="#">Delete Message</a></li>
-                              </ul>
+                        <div class="header-right-nav">
+                            <a href="#">
+                                <i class="fa-solid fa-bell-slash"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-solid fa-paperclip"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </a>
                         </div>
+
                     </div>
-                    
+                    <!-- Parte per visualizzare i messaggi della chat con l'utente selezionato -->
+                    <div class="chat">
+                        
+                        <div v-for="(mex, i) in contacts[activeUser].messages" class="message-line">
+                            <div class="message dropdown" :class="mex.status">
+                                <span>{{mex.message}}</span>
+                                <small class="text-secondary align-self-end d-flex"  data-bs-toggle="dropdown">
+                                    12:00
+                                    <span class="hide text-secondary dropdown-toggle"></span>
+                                </small>
+                                
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Message info</a></li>
+                                    <li @click="removeMessage(i)"><a class="dropdown-item" href="#">Delete Message</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- Parte per scrivere messaggi o registrare audio da inviare all'utente selezionato -->
+                    <div class="write-text">
+                        <a href="#" class="text-secondary">
+                            <i class="fa-regular fa-face-smile"></i>
+                        </a>
+
+                        <input type="text" v-model="newMessage" @keyup.enter="sendMessage" class="form-control" placeholder="Scrivi un messaggio">
+
+                        <a href="#" class="text-secondary">
+                            <i class="fa-solid fa-microphone"></i>
+                        </a>
+                        
+                    </div>
                 </div>
-                <!-- Parte per scrivere messaggi o registrare audio da inviare all'utente selezionato -->
-                <div class="write-text">
-                    <a href="#" class="text-secondary">
-                        <i class="fa-regular fa-face-smile"></i>
-                    </a>
 
-                    <input type="text" v-model="newMessage" @keyup.enter="sendMessage" class="form-control" placeholder="Scrivi un messaggio">
-
-                    <a href="#" class="text-secondary">
-                        <i class="fa-solid fa-microphone"></i>
-                    </a>
-                    
+                <div v-else class="no-mex">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <h5 class="py-2">
+                        BoolzApp Web
+                    </h5>
+                    <small class="text-secondary">
+                        Clicca su una chat per visualizzare i messaggi 
+                    </small>
                 </div>
 
             </div>

@@ -192,6 +192,19 @@ main {
     flex-grow: 1;
     padding: 5px;
 }
+/* content right - NO MEX */
+.no-mex{
+    background-color: var(--ms-main-light-color);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.no-mex i{
+    font-size: 80px;
+}
 
 
 

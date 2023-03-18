@@ -192,8 +192,9 @@ createApp({
                     ]
                 }
             ],
-            activeUser: 0, 
-            newMessage: null 
+            activeUser: -1, 
+            newMessage: null,
+            searchUser: null
         }           
     }, methods: {
         changeUser(newActiveUser) {
@@ -221,6 +222,15 @@ createApp({
         },
         removeMessage(i) {
             this.contacts[this.activeUser].messages.splice(i, 1);
+        },
+        viewSearchUser() {
+            this.contacts.forEach(userDaVisualizzare => {
+                if(!userDaVisualizzare.name.toLowerCase().includes(this.searchUser.toLowerCase())) {
+                    userDaVisualizzare.visible = false;
+                } else {
+                    userDaVisualizzare.visible = true;
+                }
+            })
         }
     }
 }).mount('#app')
