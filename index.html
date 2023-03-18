@@ -123,7 +123,7 @@
                         
                         <div v-for="(mex, i) in contacts[activeUser].messages" class="message-line">
                             <div class="message dropdown" :class="mex.status">
-                                <span>{{mex.message}}</span>
+                                <span class="text-break">{{mex.message}}</span>
                                 <small class="text-secondary align-self-end d-flex"  data-bs-toggle="dropdown">
                                     12:00
                                     <span class="hide text-secondary dropdown-toggle"></span>

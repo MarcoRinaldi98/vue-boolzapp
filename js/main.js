@@ -1,12 +1,13 @@
 /*
     JAVASCRIPT
 */
-
+// VUE JS
 const { createApp } = Vue
 
 createApp({
     data() {
         return {
+            //variabili e ogetti
             contacts: [
                 {
                     name: 'Michele',
@@ -197,9 +198,11 @@ createApp({
             searchUser: null
         }           
     }, methods: {
+        //funzione per visualizzare un nuovo user al click
         changeUser(newActiveUser) {
             this.activeUser = newActiveUser;
         },
+        //funzione per inviare e visualizzare il messaggio scritto nell'input
         sendMessage() {
             const newBoxMessage = {
                 date: '10/01/2020 15:51:00',
@@ -210,6 +213,7 @@ createApp({
             this.newMessage = '';
             this.answerMessage();
         },
+        //funzione per avere una risposta automatica con "ok" un secondo dopo che invio un messaggio
         answerMessage() {
             const answer = {
                 date: '10/01/2020 15:51:00',
@@ -220,9 +224,11 @@ createApp({
                 this.contacts[this.activeUser].messages.push(answer);
             }, 1000);
         },
+        //funzione per cancellare il messaggio selezionato nella chat
         removeMessage(i) {
             this.contacts[this.activeUser].messages.splice(i, 1);
         },
+        //funzione per visualizzare gli user tramite la ricerca scritta nell'input
         viewSearchUser() {
             this.contacts.forEach(userDaVisualizzare => {
                 if(!userDaVisualizzare.name.toLowerCase().includes(this.searchUser.toLowerCase())) {
