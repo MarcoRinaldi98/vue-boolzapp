@@ -22,7 +22,7 @@
 
 /* Regole CSS generali */
 html{
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 main {
     position: relative;
@@ -138,8 +138,12 @@ main {
 }
 .user-info {
     flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     margin: 0 10px;
 }
+
 /* content right - CHAT */
 .chat {
     height: calc(100% - 70px - 70px);
@@ -161,6 +165,7 @@ main {
     min-width: 400px;
     display: flex;
     justify-content: space-between;
+    box-shadow: 1px 1px 1px 1px var(--ms-main-light-color);
 }
 .message.sent {
     background-color: var(--ms-send-color);

@@ -13,6 +13,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <!-- Link di collegamento al foglio di stile personalizzato -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Link di collegamento a Google Fonts per il font "Open Sans" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
     <!-- Titolo del sito -->
     <title> BoolzApp </title>
@@ -81,10 +85,10 @@
 
                         <div class="user-info">
                             <h3 class="p-0 m-0">{{element.name}}</h3>
-                            <small class="text-secondary">Ultimo messaggio inviato</small>
+                            <small class="text-secondary">{{element.messages[element.messages.length - 1].message}}</small>
                         </div>
                         <div class="last-message-time">
-                            <small class="text-secondary">12:00</small>
+                            <small class="text-secondary">{{element.messages[element.messages.length - 1].date.substr(11,5)}}</small>
                         </div>
                     </div>
                     
@@ -101,20 +105,24 @@
                             <img :src="contacts[activeUser].avatar">
                             <div class="user-info">
                                 <h6 class="p-0 m-0">{{contacts[activeUser].name}}</h6>
-                                <small class="text-secondary">Ultimo accesso oggi alle 12:00</small>
+                                <small class="text-secondary">Ultimo accesso {{contacts[activeUser].messages[contacts[activeUser].messages.length - 1].date.substr(0, 10)}} alle {{contacts[activeUser].messages[contacts[activeUser].messages.length - 1].date.substr(11, 5)}}</small>
                             </div>
                         </div>
 
-                        <div class="header-right-nav">
+                        <div class="header-right-nav dropdown">
                             <a href="#">
-                                <i class="fa-solid fa-bell-slash"></i>
+                                <i class="fa-solid fa-magnifying-glass"></i>
                             </a>
                             <a href="#">
                                 <i class="fa-solid fa-paperclip"></i>
                             </a>
-                            <a href="#">
+                            <a href="#" data-bs-toggle="dropdown">
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item m-0 text-black fs-6" @click="removeAllMessage()" href="#">Elimina messaggi</a></li>
+                                <li><a class="dropdown-item m-0 text-black fs-6" @click="removeChat()" href="#">Elimina chat</a></li>
+                            </ul>
                         </div>
 
                     </div>
@@ -125,7 +133,7 @@
                             <div class="message dropdown" :class="mex.status">
                                 <span class="text-break">{{mex.message}}</span>
                                 <small class="text-secondary align-self-end d-flex"  data-bs-toggle="dropdown">
-                                    12:00
+                                    {{mex.date.substr(11,5)}}
                                     <span class="hide text-secondary dropdown-toggle"></span>
                                 </small>
                                 
@@ -171,6 +179,8 @@
     </main>
 
 
+    <!-- Script di collegamento al cdn di Luxon -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <!-- Script di collegamento al javscript di bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <!-- Script di collegamento a vue.js -->

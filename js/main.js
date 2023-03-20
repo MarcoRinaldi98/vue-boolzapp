@@ -1,6 +1,8 @@
 /*
     JAVASCRIPT
 */
+//Riporto la data della libreria esterna di LUXON
+const DateTime = luxon.DateTime;
 // VUE JS
 const { createApp } = Vue
 
@@ -194,7 +196,7 @@ createApp({
                 }
             ],
             activeUser: -1, 
-            newMessage: null,
+            newMessage: '',
             searchUser: null
         }           
     }, methods: {
@@ -204,19 +206,23 @@ createApp({
         },
         //funzione per inviare e visualizzare il messaggio scritto nell'input
         sendMessage() {
+            const nowInItaly = DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
             const newBoxMessage = {
-                date: '10/01/2020 15:51:00',
+                date: nowInItaly,
                 message: this.newMessage,
                 status: 'sent'
             };
-            this.contacts[this.activeUser].messages.push(newBoxMessage);
-            this.newMessage = '';
-            this.answerMessage();
+            if(this.newMessage.length > 0) {
+                this.contacts[this.activeUser].messages.push(newBoxMessage);
+                this.newMessage = '';
+                this.answerMessage();  
+            }   
         },
         //funzione per avere una risposta automatica con "ok" un secondo dopo che invio un messaggio
         answerMessage() {
+            const nowInItaly = DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
             const answer = {
-                date: '10/01/2020 15:51:00',
+                date: nowInItaly,
                 message: 'ok',
                 status: 'received'
             }
@@ -226,7 +232,15 @@ createApp({
         },
         //funzione per cancellare il messaggio selezionato nella chat
         removeMessage(i) {
-            this.contacts[this.activeUser].messages.splice(i, 1);
+        this.contacts[this.activeUser].messages.splice(i, 1);                      
+        },
+        //funzione per rimuovere tutti i messaggi di una chat
+        removeAllMessage() {
+            this.contacts[this.activeUser].messages.splice(0, Infinity);
+        },
+        //funzione per rimuovere una chat
+        removeChat() {
+            this.contacts.splice(this.activeUser, 1);
         },
         //funzione per visualizzare gli user tramite la ricerca scritta nell'input
         viewSearchUser() {
@@ -236,7 +250,7 @@ createApp({
                 } else {
                     userDaVisualizzare.visible = true;
                 }
-            })
+            });
         }
     }
 }).mount('#app')
