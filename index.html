@@ -151,7 +151,7 @@
                             <i class="fa-regular fa-face-smile"></i>
                         </a>
 
-                        <input type="text" id="chatMessage" v-model="newMessage" @keyup.enter="sendMessage" class="form-control" placeholder="Scrivi un messaggio">
+                        <input type="text" v-model="newMessage" @keyup.enter="sendMessage" class="form-control" placeholder="Scrivi un messaggio">
 
                         <a href="#" class="text-secondary">
                             <i v-if="this.newMessage.length > 0" @click="sendMessage()" class="fa-solid fa-paper-plane"></i>

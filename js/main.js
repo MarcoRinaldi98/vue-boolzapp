@@ -197,22 +197,19 @@ createApp({
             ],
             activeUser: -1, 
             newMessage: '',
-            searchUser: null,
+            searchUser: '',
             randomAnswer: ['Ok', 'Si', 'No', 'Vabbene', 'A dopo', 'Perfetto', 'Ne parliamo piu tardi', 'Come va?', 'Alla grande!']
         }           
     }, methods: {
         //funzione per visualizzare un nuovo user al click
         changeUser(newActiveUser) {
-            const chatMessageDom = document.getElementById('chatMessage');
             this.activeUser = newActiveUser;
-            chatMessageDom.style.border = "1px solid grey";
             setTimeout(() => {
                 this.scrollOnLastMex();
             }, 100);
         },
         //funzione per inviare e visualizzare il messaggio scritto nell'input
         sendMessage() {
-            const chatMessageDom = document.getElementById('chatMessage');
             const nowInItaly = DateTime.now().setLocale('it').toFormat('dd/MM/yyyy HH:mm:ss');
             const newBoxMessage = {
                 date: nowInItaly,
@@ -220,12 +217,9 @@ createApp({
                 status: 'sent'
             };
             if(this.newMessage.trim().length > 0) {
-                chatMessageDom.style.border = "1px solid grey";
                 this.contacts[this.activeUser].messages.push(newBoxMessage);
                 this.newMessage = '';
                 this.answerMessage();  
-            } else {
-                chatMessageDom.style.border = "4px solid red";
             }
         },
         //funzione per avere una risposta automatica con "ok" un secondo dopo che invio un messaggio
