@@ -206,6 +206,9 @@ createApp({
             const chatMessageDom = document.getElementById('chatMessage');
             this.activeUser = newActiveUser;
             chatMessageDom.style.border = "1px solid grey";
+            setTimeout(() => {
+                this.scrollOnLastMex();
+            }, 100);
         },
         //funzione per inviare e visualizzare il messaggio scritto nell'input
         sendMessage() {
@@ -235,7 +238,13 @@ createApp({
                 status: 'received'
             }
             setTimeout(() => {
+                this.scrollOnLastMex();
+            }, 100);
+            setTimeout(() => {
                 this.contacts[this.activeUser].messages.push(answer);
+                setTimeout(() => {
+                    this.scrollOnLastMex();
+                }, 100);
             }, 1000);
         },
         //funzione per cancellare il messaggio selezionato nella chat
@@ -259,6 +268,12 @@ createApp({
                     userDaVisualizzare.visible = true;
                 }
             });
+        },
+        //funzione per scorrere tutta la height del contenitore dei messaggi oer vedere sempre il messaggio piu recente
+        scrollOnLastMex() {
+            const viewChatDom = document.getElementById('viewChat');
+            const scrollChat = viewChatDom.scrollHeight;
+            viewChatDom.scrollTop = scrollChat;
         }
     }
 }).mount('#app')

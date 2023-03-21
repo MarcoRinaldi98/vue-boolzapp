@@ -127,7 +127,7 @@
 
                     </div>
                     <!-- Parte per visualizzare i messaggi della chat con l'utente selezionato -->
-                    <div class="chat">
+                    <div id="viewChat" class="chat">
                         
                         <div v-for="(mex, i) in contacts[activeUser].messages" class="message-line">
                             <div class="message dropdown" :class="mex.status">
