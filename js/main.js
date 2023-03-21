@@ -197,7 +197,8 @@ createApp({
             ],
             activeUser: -1, 
             newMessage: '',
-            searchUser: null
+            searchUser: null,
+            randomAnswer: ['Ok', 'Si', 'No', 'Vabbene', 'A dopo', 'Perfetto', 'Ne parliamo piu tardi', 'Come va?', 'Alla grande!']
         }           
     }, methods: {
         //funzione per visualizzare un nuovo user al click
@@ -206,13 +207,13 @@ createApp({
         },
         //funzione per inviare e visualizzare il messaggio scritto nell'input
         sendMessage() {
-            const nowInItaly = DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
+            const nowInItaly = DateTime.now().setLocale('it').toFormat('dd/MM/yyyy HH:mm:ss');
             const newBoxMessage = {
                 date: nowInItaly,
                 message: this.newMessage,
                 status: 'sent'
             };
-            if(this.newMessage.length > 0) {
+            if(this.newMessage.trim().length > 0) {
                 this.contacts[this.activeUser].messages.push(newBoxMessage);
                 this.newMessage = '';
                 this.answerMessage();  
@@ -220,10 +221,11 @@ createApp({
         },
         //funzione per avere una risposta automatica con "ok" un secondo dopo che invio un messaggio
         answerMessage() {
-            const nowInItaly = DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
+            const nowInItaly = DateTime.now().setLocale('it').toFormat('dd/MM/yyyy HH:mm:ss');
+            randomAnswerIndex = Math.floor(Math.random() * this.randomAnswer.length);
             const answer = {
                 date: nowInItaly,
-                message: 'ok',
+                message: this.randomAnswer[randomAnswerIndex],
                 status: 'received'
             }
             setTimeout(() => {

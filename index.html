@@ -85,10 +85,10 @@
 
                         <div class="user-info">
                             <h3 class="p-0 m-0">{{element.name}}</h3>
-                            <small class="text-secondary">{{element.messages[element.messages.length - 1].message}}</small>
+                            <small v-if="element.messages.length > 0" class="text-secondary">{{element.messages[element.messages.length - 1].message}}</small>
                         </div>
                         <div class="last-message-time">
-                            <small class="text-secondary">{{element.messages[element.messages.length - 1].date.substr(11,5)}}</small>
+                            <small v-if="element.messages.length > 0" class="text-secondary">{{element.messages[element.messages.length - 1].date.substr(11,5)}}</small>
                         </div>
                     </div>
                     
@@ -105,7 +105,7 @@
                             <img :src="contacts[activeUser].avatar">
                             <div class="user-info">
                                 <h6 class="p-0 m-0">{{contacts[activeUser].name}}</h6>
-                                <small class="text-secondary">Ultimo accesso {{contacts[activeUser].messages[contacts[activeUser].messages.length - 1].date.substr(0, 10)}} alle {{contacts[activeUser].messages[contacts[activeUser].messages.length - 1].date.substr(11, 5)}}</small>
+                                <small v-if="contacts[activeUser].messages.length > 0" class="text-secondary">Ultimo accesso il {{contacts[activeUser].messages[contacts[activeUser].messages.length - 1].date.substr(0, 10)}} alle {{contacts[activeUser].messages[contacts[activeUser].messages.length - 1].date.substr(11, 5)}}</small>
                             </div>
                         </div>
 
@@ -154,7 +154,8 @@
                         <input type="text" v-model="newMessage" @keyup.enter="sendMessage" class="form-control" placeholder="Scrivi un messaggio">
 
                         <a href="#" class="text-secondary">
-                            <i class="fa-solid fa-microphone"></i>
+                            <i v-if="this.newMessage.length > 0" @click="sendMessage()" class="fa-solid fa-paper-plane"></i>
+                            <i v-else class="fa-solid fa-microphone"></i>
                         </a>
                         
                     </div>
