@@ -252,6 +252,9 @@ createApp({
         //funzione per rimuovere una chat
         removeChat() {
             this.contacts.splice(this.activeUser, 1);
+            if (this.contacts.length == 0) {
+                this.activeUser = -1;
+            }
         },
         //funzione per visualizzare gli user tramite la ricerca scritta nell'input
         viewSearchUser() {

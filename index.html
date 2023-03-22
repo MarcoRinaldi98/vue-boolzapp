@@ -78,20 +78,22 @@
                 <!-- lista chat con utenti -->
                 <div class="users">
 
-                    <div v-for="(element, index) in contacts" class="user" v-show="element.visible" @click="changeUser(index)">
-                        <div class="user-image">
-                            <img :src="element.avatar" :alt="element.name">
-                        </div>
+                    <div v-if="contacts.length > 0">
+                        <div v-for="(element, index) in contacts" class="user" v-show="element.visible" @click="changeUser(index)">
+                            <div class="user-image">
+                                <img :src="element.avatar" :alt="element.name">
+                            </div>
 
-                        <div class="user-info">
-                            <h3 class="p-0 m-0">{{element.name}}</h3>
-                            <small v-if="element.messages.length > 0" class="text-secondary">{{element.messages[element.messages.length - 1].message}}</small>
-                        </div>
-                        <div class="last-message-time">
-                            <small v-if="element.messages.length > 0" class="text-secondary">{{element.messages[element.messages.length - 1].date.substr(11,5)}}</small>
+                            <div class="user-info">
+                                <h3 class="p-0 m-0">{{element.name}}</h3>
+                                <small v-if="element.messages.length > 0" class="text-secondary">{{element.messages[element.messages.length - 1].message}}</small>
+                            </div>
+                            <div class="last-message-time">
+                                <small v-if="element.messages.length > 0" class="text-secondary">{{element.messages[element.messages.length - 1].date.substr(11,5)}}</small>
+                            </div>
                         </div>
                     </div>
-                    
+
                 </div>
 
             </div>
